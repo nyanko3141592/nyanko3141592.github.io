@@ -28,7 +28,7 @@ body {
       <h1 class="text-black mt-5">@nya3_neko2に優しい言葉をかけるシステム</h1>
       <a href="" onClick="window.open(encodeURI(decodeURI(this.href)), 'tweetwindow', 'width=650, height=470, personalbar=0, toolbar=0, scrollbars=1, sizable=1'); return false;" rel="nofollow" class="twitter-link btn btn-lg btn-primary my-5" id="nyanko">
         声をかける</a>
-        <a href="" onClick="window.open(encodeURI(decodeURI(this.href)), 'tweetwindow', 'width=650, height=470, personalbar=0, toolbar=0, scrollbars=1, sizable=1'); return false;" rel="nofollow" class="twitter-link btn btn-lg btn-primary my-5" id="nyanko">
+      <a href="" onClick="window.open(encodeURI(decodeURI(this.href)), 'tweetwindow', 'width=650, height=470, personalbar=0, toolbar=0, scrollbars=1, sizable=1'); return false;" rel="nofollow" class="twitter-link btn btn-lg btn-primary my-5" id="nyanko">
           筋肉送信ボタン</a>
     </div>
   </body>
@@ -47,11 +47,29 @@ body {
       'ギリギリまで終わらないタスクが悪い、お前は悪くない',
     ];
 
-    let random = msg_array[Math.floor(Math.random() * msg_array.length)];
+    let muscle_array = [
+      '大胸筋が泣いてるぜ？',
+      '肩にジープ乗ってないけど大丈夫？',
+      '筋肉ないのに受験に合格できると思ってるの？',
+      '筋肉ないのに人権あると思ってるの？',
+      '筋肉つけて出直せ',
+      '筋肉！！！筋肉！！！筋肉！！！筋肉！！！筋肉！！！！！！！',
+      '筋トレもしないで何やってるの？',
+      '筋肉は服と同義だから筋肉ないお前は裸も同じ。貧相な肉体は公然猥褻罪',
+      'いい筋肉してるねえ',
+      'タンパク質足りてる？',
+    ];
 
-    let targ = document.getElementById("nyanko");
+    let random_msg = msg_array[Math.floor(Math.random() * msg_array.length)];
+    let random_muscle = muscle_array[Math.floor(Math.random() * msg_array.length)];
 
-    targ.href = "https://twitter.com/intent/tweet?text=" + random + "%20@nya3_neko2";
+    let targ1 = document.getElementById("nyanko");
+    let targ2 = document.getElementById("nyanko");
+
+    targ1.href = "https://twitter.com/intent/tweet?text=" + random_msg + "%20@nya3_neko2";
+    targ2.href = "https://twitter.com/intent/tweet?text=" + random_muscle + "%20@nya3_neko2";
+
+
 
   </script>
 </html>
