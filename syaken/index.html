@@ -28,32 +28,34 @@ body {
     <div class="container text-center">
       <h1 class="text-black mt-5">射研ツイート</h1>
       <p>実験日<br>
-        <input type="text" name="Date" id = "experiment_date"></p>
+        <input type="text" name="Date" id = "experiment_date" onchange="get_status()"></p>
       <p>回数<br>
-        <input type="text" name="number" id = "experiment_number"></p>
+        <input type="text" name="number" id = "experiment_number" onchange="get_status()"></p>
       <p>時間帯<br>
-        <input type="text" name="timeline" id = "experiment_time"></p>
+        <input type="text" name="timeline" id = "experiment_time" onchange="get_status()"></p>
       <p>感想<br>
-        <textarea name="comment" cols="30" rows="8" id = "experiment_text"></textarea>
+        <textarea name="comment" cols="30" rows="8" id = "experiment_text" onchange="get_status()"></textarea>
         <br>
-      <a href="" onClick="window.open(encodeURI(decodeURI(this.href)), 'tweetwindow', 'width=650, height=470, personalbar=0, toolbar=0, scrollbars=1, sizable=1'); return false;" rel="nofollow" class="twitter-link btn btn-lg btn-primary my-5" id="submit_button">研究送信ボタン</a>
+      <a href="" onClick="get_status(); window.open(encodeURI(decodeURI(this.href)), 'tweetwindow', 'width=650, height=470, personalbar=0, toolbar=0, scrollbars=1, sizable=1'); return false;" rel="nofollow" class="twitter-link btn btn-lg btn-primary my-5" id="submit_button">研究送信ボタン</a>
     </div>
   </body>
 
   <script>
     function get_status() {
-      experiment_date = document.getElementById("experiment_date").value;
-      experiment_number = document.getElementById("experiment_number").value;
-      experiment_time = document.getElementById("experiment_time").value;
-      experiment_text = document.getElementById("experiment_text").value;
-      const tweet_text =  experiment_date + "の射○%0D%0A%0D%0A回数%0D%0A" + experiment_number + "回%0D%0A時間帯%0D%0A" + experiment_time + "%0D%0A感想　" + experiment_text + "%0D%0A%0D%0A";
-      return tweet_text
+      console.log("status changed");
+      experiment_date = String(document.getElementById("experiment_date").value);
+      experiment_number = String(document.getElementById("experiment_number").value);
+      experiment_time = String(document.getElementById("experiment_time").value);
+      experiment_text = String(document.getElementById("experiment_text").value);
+      console.log("textboxs are ",experiment_date,experiment_number,experiment_time,experiment_text)
+      const tweet_text =  encodeURI(experiment_date) + encodeURI("の射○") + "%0D%0A%0D%0A"+encodeURI("回数")+"%0D%0A" + encodeURI(experiment_number) + encodeURI("回") + "%0D%0A"+encodeURI("時間帯")+"%0D%0A" + encodeURI(experiment_time) + "%0D%0A" + encodeURI("感想　") + encodeURI(experiment_text) + "%0D%0A%0D%0A";
+      console.log(tweet_text);
+      console.log(decodeURI(tweet_text))
+      targ1.href = "https://twitter.com/intent/tweet?hashtags=%E5%B0%84%E7%A0%94&text=" + String(tweet_text);
+      return  "https://twitter.com/intent/tweet?hashtags=%E5%B0%84%E7%A0%94&text=" + String(tweet_text);
     };
-    
-    let tweet_text =  experiment_date + "の射○%0D%0A%0D%0A回数%0D%0A" + experiment_number + "回%0D%0A時間帯%0D%0A" + experiment_time + "%0D%0A感想　" + experiment_text + "%0D%0A%0D%0A";
-    
-    let targ1 = document.getElementById("submit_button");
-    targ1.href = "https://twitter.com/intent/tweet?hashtags=%E5%B0%84%E7%A0%94&text=" + get_status();
-
+    get_status();
+    var targ1 = document.getElementById("submit_button");
+    targ1.href = String(get_status());
   </script>
 </html>
