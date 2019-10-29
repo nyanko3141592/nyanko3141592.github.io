@@ -26,56 +26,29 @@ body {
 
   <body style="background: #ffffff">
     <div class="container text-center">
-      <h1 class="text-black mt-5">射研ツイートフォーム</h1>
+      <h1 class="text-black mt-5">射研ツイート</h1>
       <p>実験日<br>
-        <input type="text" name="Date"></p>
+        <input type="text" name="Date" id = "experiment_date"></p>
       <p>回数<br>
-        <input type="text" name="number"></p>
+        <input type="text" name="number" id = "experiment_number"></p>
+      <p>時間帯<br>
+        <input type="text" name="timeline" id = "experiment_time"></p>
       <p>感想<br>
-        <textarea name="comment" cols="40" rows="8"></textarea>
+        <textarea name="comment" cols="30" rows="8" id = "experiment_text"></textarea>
         <br>
-      <a href="" onClick="window.open(encodeURI(decodeURI(this.href)), 'tweetwindow', 'width=650, height=470, personalbar=0, toolbar=0, scrollbars=1, sizable=1'); return false;" rel="nofollow" class="twitter-link btn btn-lg btn-primary my-5" id="nyanko">研究送信ボタン</a>
+      <a href="" onClick="window.open(encodeURI(decodeURI(this.href)), 'tweetwindow', 'width=650, height=470, personalbar=0, toolbar=0, scrollbars=1, sizable=1'); return false;" rel="nofollow" class="twitter-link btn btn-lg btn-primary my-5" id="submit_button">研究送信ボタン</a>
     </div>
   </body>
 
   <script>
+    experiment_date = document.getElementById("experiment_date").textContent;
+    experiment_number = document.getElementById("experiment_number").textContent;
+    experiment_time = document.getElementById("experiment_time").textContent;
+    experiment_text = document.getElementById("experiment_text").textContent;
+    let tweet_text = experiment_date + "の射○\n回数\n" + experiment_number + "回\n時間帯\n" + experiment_time + "\n感想　" + experiment_text + "\n\n#射研";
     
-    let msg_array = [
-      '寝てていいよ',
-      'タスク代わりに終わらせておくよ',
-      'タスクを終わらしてないお前でも価値があるよ',
-      '仕事？やっといたよ',
-      '俺の大胸筋で泣くかい？',
-      '目の前のタスクに集中してろ。他は任せろ',
-      'つらかったよね。泣いてもいいよ',
-      '遊ぼうぜ！',
-      'お前はよくやってるよ',
-      'ギリギリまで終わらないタスクが悪い、お前は悪くない',
-    ];
-
-    let muscle_array = [
-      '大胸筋が泣いてるぜ？',
-      '肩にジープ乗ってないけど大丈夫？',
-      '筋肉ないのに受験に合格できると思ってるの？',
-      '筋肉ないのに人権あると思ってるの？',
-      '筋肉つけて出直せ',
-      '筋肉！！！筋肉！！！筋肉！！！筋肉！！！筋肉！！！！！！！！',
-      '筋トレもしないで何やってるの？',
-      '筋肉は服と同義だから筋肉ないお前は裸も同じ。貧相な肉体は公然猥褻罪',
-      'いい筋肉してるねえ',
-      'タンパク質足りてる？',
-    ];
-
-    let random_msg = msg_array[Math.floor(Math.random() * msg_array.length)];
-    let random_muscle = muscle_array[Math.floor(Math.random() * msg_array.length)];
-
-    let targ1 = document.getElementById("nyanko");
-    let targ2 = document.getElementById("muscle");
-
-    targ1.href = "https://twitter.com/intent/tweet?text=" + random_msg + "%20@nya3_neko2";
-    targ2.href = "https://twitter.com/intent/tweet?text=" + random_muscle + "%20@nya3_neko2";
-
-
+    let targ1 = document.getElementById("submit_button");
+    targ1.href = "https://twitter.com/intent/tweet?text=" + tweet_text;
 
   </script>
 </html>
