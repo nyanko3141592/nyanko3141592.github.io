@@ -41,14 +41,19 @@ body {
   </body>
 
   <script>
-    experiment_date = document.getElementById("experiment_date").value;
-    experiment_number = document.getElementById("experiment_number").value;
-    experiment_time = document.getElementById("experiment_time").value;
-    experiment_text = document.getElementById("experiment_text").value;
+    function get_status() {
+      experiment_date = document.getElementById("experiment_date").value;
+      experiment_number = document.getElementById("experiment_number").value;
+      experiment_time = document.getElementById("experiment_time").value;
+      experiment_text = document.getElementById("experiment_text").value;
+      const tweet_text =  experiment_date + "の射○%0D%0A%0D%0A回数%0D%0A" + experiment_number + "回%0D%0A時間帯%0D%0A" + experiment_time + "%0D%0A感想　" + experiment_text + "%0D%0A%0D%0A";
+      return tweet_text
+    };
+    
     let tweet_text =  experiment_date + "の射○%0D%0A%0D%0A回数%0D%0A" + experiment_number + "回%0D%0A時間帯%0D%0A" + experiment_time + "%0D%0A感想　" + experiment_text + "%0D%0A%0D%0A";
     
     let targ1 = document.getElementById("submit_button");
-    targ1.href = "https://twitter.com/intent/tweet?hashtags=%E5%B0%84%E7%A0%94&text=" + tweet_text;
+    targ1.href = "https://twitter.com/intent/tweet?hashtags=%E5%B0%84%E7%A0%94&text=" + get_status;
 
   </script>
 </html>
