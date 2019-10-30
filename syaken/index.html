@@ -28,34 +28,33 @@ body {
     <div class="container text-center">
       <h1 class="text-black mt-5">射研ツイート</h1>
       <p>実験日<br>
-        <input type="text" name="Date" id = "experiment_date" onchange="get_status()"></p>
+        <input type="text" name="Date" class = "experiment_date"></p>
       <p>回数<br>
-        <input type="text" name="number" id = "experiment_number" onchange="get_status()"></p>
+        <input type="text" name="number" class = "experiment_number"></p>
       <p>時間帯<br>
-        <input type="text" name="timeline" id = "experiment_time" onchange="get_status()"></p>
+        <input type="text" name="timeline" class = "experiment_time"></p>
       <p>感想<br>
-        <textarea name="comment" cols="30" rows="8" id = "experiment_text" onchange="get_status()"></textarea>
+        <textarea name="comment" cols="30" rows="8" class = "experiment_text"></textarea>
         <br>
-      <a href="" onClick="get_status(); window.open(encodeURI(decodeURI(this.href)), 'tweetwindow', 'width=650, height=470, personalbar=0, toolbar=0, scrollbars=1, sizable=1'); return false;" rel="nofollow" class="twitter-link btn btn-lg btn-primary my-5" id="submit_button">研究送信ボタン</a>
+      <a href="" rel="nofollow" class="twit" id="submit_button">研究送信ボタン</a>
     </div>
   </body>
 
   <script>
-    function get_status() {
-      console.log("status changed");
-      experiment_date = String(document.getElementById("experiment_date").value);
-      experiment_number = String(document.getElementById("experiment_number").value);
-      experiment_time = String(document.getElementById("experiment_time").value);
-      experiment_text = String(document.getElementById("experiment_text").value);
-      console.log("textboxs are ",experiment_date,experiment_number,experiment_time,experiment_text)
-      const tweet_text =  encodeURI(experiment_date) + encodeURI("の射○") + "%0D%0A%0D%0A"+encodeURI("回数")+"%0D%0A" + encodeURI(experiment_number) + encodeURI("回") + "%0D%0A"+encodeURI("時間帯")+"%0D%0A" + encodeURI(experiment_time) + "%0D%0A" + encodeURI("感想　") + encodeURI(experiment_text) + "%0D%0A%0D%0A";
-      console.log(tweet_text);
-      console.log(decodeURI(tweet_text))
-      targ1.href = "https://twitter.com/intent/tweet?hashtags=%E5%B0%84%E7%A0%94&text=" + String(tweet_text);
-      return  "https://twitter.com/intent/tweet?hashtags=%E5%B0%84%E7%A0%94&text=" + String(tweet_text);
-    };
-    get_status();
-    var targ1 = document.getElementById("submit_button");
-    targ1.href = String(get_status());
+    let ex_date=document.querySelector(".experiment_date");
+    let ex_number=document.querySelector(".experiment_number");
+    let ex_time=document.querySelector(".experiment_time");
+    let ex_text=document.querySelector(".experiment_text");
+    document.querySelector(".twit").addEventListener("click",()=>{
+      let tweet=ex_date.value+"の射○";
+      tweet+="\n\n"+ex_number.value;
+      tweet+="\n回数\n"+ex_number.value+"回";
+      tweet+="\n時間帯\n"+ex_time.value;
+      tweet+="\n感想\n"+ex_text.value;
+      tweet+="\n\n#射研";
+      const posibtweet= encodeURIComponent(tweet);
+      const URt=`https://twitter.com/intent/tweet?text=${posibtweet}`;
+      window.open(URt, 'tweetwindow', 'width=650, height=470, personalbar=0, toolbar=0, scrollbars=1, sizable=1');
+    });
   </script>
 </html>
