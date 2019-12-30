@@ -45,7 +45,7 @@ body {
       }
       tweet += "|＿＿＿＿＿＿＿＿＿＿＿＿| \n            (\__/)   ||\n            (•ㅅ•)   ||\n            /  　  づ";
       const posibtweet= encodeURIComponent(tweet);
-      const URt="https://twitter.com/intent/tweet?text=${posibtweet}";
+      const URt="https://twitter.com/intent/tweet?text=" + posibtweet;
       window.open(URt, 'tweetwindow', 'width=650, height=470, personalbar=0, toolbar=0, scrollbars=1, sizable=1');
      });
   </script>
