@@ -25,7 +25,8 @@ body {
   <body style="background: #ffffff">
     <div class="container text-center">
       <h1 class="text-black mt-5">ツイッターで札をあげるサイト</h1>
-      <a href="" rel="nofollow" class="twit" id="submit_button">研究送信</a>
+      <textarea name="comment" cols="30" rows="8" class = "experiment_text"></textarea>
+      <a href="" rel="nofollow" class="twit" id="submit_button">札をあげる</a>
     </div>
   </body>
 
@@ -33,7 +34,7 @@ body {
     let ex_text=document.querySelector(".experiment_text");
     document.querySelector(".twit").addEventListener("click",()=>{
       let tweet=ex_text.value;
-      
+
       const posibtweet= encodeURIComponent(tweet);
       const URt=`https://twitter.com/intent/tweet?text=${posibtweet}`;
       window.open(URt, 'tweetwindow', 'width=650, height=470, personalbar=0, toolbar=0, scrollbars=1, sizable=1');
