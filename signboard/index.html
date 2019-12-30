@@ -32,10 +32,9 @@ body {
 
   <script>
      let ex_text=document.querySelector(".experiment_text");
-     let tweet = "|￣￣￣￣￣￣￣￣￣￣￣￣|\n";
 
      document.querySelector(".twit").addEventListener("click",()=>{
-      let tweet=ex_text.value;
+      let tweet = "|￣￣￣￣￣￣￣￣￣￣￣￣|\n";
       tweet_list = tweet.split('\n');
       let i = 0;
       for (let i = 0; i < tweet_list.length; i++){
@@ -43,7 +42,7 @@ body {
           let line = tweet_list[i] + "| ";
           tweet +=  tweet_list[i];
       }
-      tweet += "|＿＿＿＿＿＿＿＿＿＿＿＿| \n            (\__/)   ||\n            (•ㅅ•)   ||\n            /  　  づ";
+      tweet += "\n|＿＿＿＿＿＿＿＿＿＿＿＿| \n            (\__/)   ||\n            (•ㅅ•)   ||\n            /  　  づ";
       const posibtweet= encodeURIComponent(tweet);
       const URt="https://twitter.com/intent/tweet?text=" + posibtweet;
       window.open(URt, 'tweetwindow', 'width=650, height=470, personalbar=0, toolbar=0, scrollbars=1, sizable=1');
