@@ -36,11 +36,14 @@ body {
      document.querySelector(".twit").addEventListener("click",()=>{
       let tweet = "|￣￣￣￣￣￣￣￣￣￣￣￣|\n";
       tweet_list = tweet.split('\n');
-      let i = 0;
       for (let i = 0; i < tweet_list.length; i++){
+          let underber = "＿"*(13-2-tweet_list.length);
+          let line = "|＿＿" + tweet_list[i] + underber + "|\n";
           console.log(tweet_list[i].length);
-          let line = tweet_list[i] + "| ";
-          tweet +=  tweet_list[i];
+          if(tweet_list[i].length >= 13){
+
+          }
+          tweet +=  line;
       }
       tweet += "\n|＿＿＿＿＿＿＿＿＿＿＿＿| \n            (\__/)   ||\n            (•ㅅ•)   ||\n            /  　  づ";
       const posibtweet= encodeURIComponent(tweet);
