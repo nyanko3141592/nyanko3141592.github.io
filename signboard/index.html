@@ -30,14 +30,5 @@ body {
     </div>
   </body>
 
-  <script>
-    let ex_text=document.querySelector(".experiment_text");
-    document.querySelector(".twit").addEventListener("click",()=>{
-      let tweet=ex_text.value;
-
-      const posibtweet= encodeURIComponent(tweet);
-      const URt=`https://twitter.com/intent/tweet?text=${posibtweet}`;
-      window.open(URt, 'tweetwindow', 'width=650, height=470, personalbar=0, toolbar=0, scrollbars=1, sizable=1');
-    });
-  </script>
+  <script type="text/javascript" src="sample.js"></script>
 </html>
