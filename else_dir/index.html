@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu+Mono" rel="stylesheet">
+    <link rel="shortcut icon" type="image/png" href="https://nyanko3142592.github.io/nya3_neko2.github.io/signboard/limit.png">
+    <title>２０２０年になった札をあげるサイト</title>
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@nya3_neko2" />
+    <meta name="twitter:creator" content="@nya3_neko2">
+    <meta property="og:url" content="https://nyanko3142592.github.io/nya3_neko2.github.io/signboard" />
+    <meta property="og:title" content="札をあげるサイト" />
+    <meta property="og:description" content="ウサギさんで札をあげる" />
+    <meta property="og:image" content="https://nyanko3142592.github.io/nya3_neko2.github.io/signboard/limit.png" />
+  </head>
+
+  <style>
+body {
+  display: -ms-flexbox;
+  display: flex;
+  font-family: 'arial black';
+  color: #000000;
+}
+  </style>
+
+  <body style="background: #ffffff">
+    <div class="container text-center">
+      <h1 class="text-black mt-5" style="background-color:#FFCACA;">Today Groping</h1>
+      <h2 class="text-black mt-5">
+          |￣￣￣￣￣￣￣￣￣￣￣￣|<br>
+|　　なんも　　　　　　　|<br>
+|　　わからん　　　　　　|<br>
+|＿＿＿＿＿＿＿＿＿＿＿＿|<br>
+            (__/) ||<br>
+            (•ㅅ•)   ||<br>
+            /  　  づ</h2>
+      <h5 class="text-black mt-5">※全角で書いてね <br>※1行は10文字以内</h5>
+      <textarea name="comment" cols="30" rows="8" class = "experiment_text"></textarea><br>
+      <h2 href="" rel="nofollow" class="twit" id="submit_button" style="padding: 0.5em 1em;margin: 2em 0;font-weight: bold;color: #6091d3;background: #FFF;border: solid 3px #6091d3;border-radius: 10px;">札をあげる</h2>
+    </div>
+  </body>
+
+  <script>
+     let ex_text = document.querySelector(".experiment_text");
+
+     document.querySelector(".twit").addEventListener("click",()=>{
+        let tweet = "|￣￣￣￣￣￣￣￣￣￣￣￣|\n";
+        let tweet_list = ex_text.value.split('\n');
+        for (let i = 0; i < tweet_list.length; i++){
+            let line = "|　　";
+            line += tweet_list[i];
+            space_num = 10 - tweet_list[i].length
+            let space = "　".repeat(space_num);
+            line += space + "|\n"
+            tweet += line
+        }
+        tweet += "|＿＿＿＿＿＿＿＿＿＿＿＿| \n            (\__/)     ||\n            (•ㅅ•)   ||\n            /  　  づ\nhttps://nyanko3142592.github.io/nya3_neko2.github.io/signboard/";
+        const posibtweet= encodeURIComponent(tweet);
+        const URt="https://twitter.com/intent/tweet?text=" + posibtweet;
+        window.open(URt, 'tweetwindow', 'width=650, height=470, personalbar=0, toolbar=0, scrollbars=1, sizable=1');
+     });
+  </script>
+</html>
