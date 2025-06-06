@@ -5,23 +5,29 @@
 }
 
 :root {
-    --primary-color: #0066ff;
-    --text-primary: #1a1a1a;
-    --text-secondary: #666666;
-    --bg-primary: #ffffff;
-    --bg-secondary: #f8f9fa;
-    --border-color: #e5e7eb;
-    --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    --card-hover-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    --primary-color: #ff6b9d;
+    --secondary-color: #4ecdc4;
+    --accent-color: #ffd93d;
+    --text-primary: #2d3436;
+    --text-secondary: #636e72;
+    --bg-primary: #ffeaa7;
+    --bg-secondary: #fab1a0;
+    --cat-pink: #ff7675;
+    --cat-orange: #fdcb6e;
+    --paw-brown: #6c5ce7;
+    --border-color: #ddd6fe;
+    --card-shadow: 0 4px 15px rgba(255, 107, 157, 0.3);
+    --card-hover-shadow: 0 8px 25px rgba(255, 107, 157, 0.4);
 }
 
 body {
     font-family: 'Inter', 'Noto Sans JP', -apple-system, BlinkMacSystemFont, sans-serif;
     color: var(--text-primary);
-    background-color: var(--bg-primary);
+    background: linear-gradient(135deg, #ffeaa7 0%, #fab1a0 50%, #ff7675 100%);
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    min-height: 100vh;
 }
 
 .container {
@@ -32,10 +38,16 @@ body {
 
 /* Hero Section */
 .hero {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #ff6b9d 0%, #4ecdc4 50%, #ffd93d 100%);
     color: white;
     padding: 80px 0;
     text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.cat-gradient {
+    background: linear-gradient(135deg, #ff6b9d 0%, #ff7675 50%, #ffd93d 100%);
 }
 
 .hero-title {
@@ -43,6 +55,15 @@ body {
     font-weight: 700;
     margin-bottom: 10px;
     letter-spacing: -0.02em;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    animation: bounceIn 1s ease;
+}
+
+@keyframes bounceIn {
+    0% { transform: scale(0.3); opacity: 0; }
+    50% { transform: scale(1.05); }
+    70% { transform: scale(0.9); }
+    100% { transform: scale(1); opacity: 1; }
 }
 
 .hero-subtitle {
@@ -68,20 +89,36 @@ body {
     flex-wrap: wrap;
 }
 
-.social-links a {
+.paw-button {
     color: white;
     text-decoration: none;
-    padding: 10px 20px;
-    border: 2px solid rgba(255, 255, 255, 0.3);
-    border-radius: 8px;
+    padding: 12px 24px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 25px;
     transition: all 0.3s ease;
     font-weight: 500;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
 }
 
-.social-links a:hover {
-    background-color: rgba(255, 255, 255, 0.1);
+.paw-icon {
+    font-size: 1.2em;
+    animation: pawBounce 2s infinite;
+}
+
+@keyframes pawBounce {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2) rotate(10deg); }
+}
+
+.paw-button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
     border-color: white;
-    transform: translateY(-2px);
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 20px rgba(255, 107, 157, 0.4);
 }
 
 /* Sections */
@@ -89,12 +126,19 @@ body {
     padding: 60px 0;
 }
 
-.section-title {
+.cat-title {
     font-size: 2.5rem;
     font-weight: 700;
     margin-bottom: 40px;
     text-align: center;
     color: var(--text-primary);
+    text-shadow: 2px 2px 4px rgba(255, 107, 157, 0.3);
+    animation: titleBounce 2s ease-in-out infinite;
+}
+
+@keyframes titleBounce {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
 }
 
 /* Project Grid */
@@ -106,16 +150,35 @@ body {
 }
 
 .project-card {
-    background: var(--bg-secondary);
-    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
     padding: 30px;
     transition: all 0.3s ease;
     box-shadow: var(--card-shadow);
+    border: 3px solid var(--border-color);
+    position: relative;
+    overflow: hidden;
+}
+
+.project-card::before {
+    content: '🐾';
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 1.5em;
+    opacity: 0.3;
+    animation: pawRotate 3s infinite linear;
+}
+
+@keyframes pawRotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
 }
 
 .project-card:hover {
-    transform: translateY(-4px);
+    transform: translateY(-8px) rotate(1deg);
     box-shadow: var(--card-hover-shadow);
+    border-color: var(--primary-color);
 }
 
 .project-header {
@@ -134,13 +197,20 @@ body {
 }
 
 .project-badge {
-    background: var(--primary-color);
+    background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
     color: white;
-    padding: 4px 12px;
-    border-radius: 20px;
+    padding: 6px 16px;
+    border-radius: 25px;
     font-size: 0.85rem;
-    font-weight: 500;
+    font-weight: 600;
     white-space: nowrap;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+    animation: badgeGlow 2s infinite alternate;
+}
+
+@keyframes badgeGlow {
+    from { box-shadow: 0 0 5px rgba(255, 107, 157, 0.5); }
+    to { box-shadow: 0 0 15px rgba(255, 107, 157, 0.8), 0 0 25px rgba(255, 107, 157, 0.6); }
 }
 
 .project-description {
@@ -202,19 +272,38 @@ body {
 }
 
 .skill-tag {
-    background: var(--bg-secondary);
+    background: linear-gradient(45deg, rgba(255, 255, 255, 0.9), rgba(255, 182, 193, 0.9));
     padding: 8px 16px;
     border-radius: 20px;
     font-size: 0.9rem;
     color: var(--text-primary);
-    border: 1px solid var(--border-color);
-    transition: all 0.2s ease;
+    border: 2px solid var(--border-color);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.skill-tag::before {
+    content: '🐱';
+    position: absolute;
+    right: -20px;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0;
+    transition: all 0.3s ease;
 }
 
 .skill-tag:hover {
-    background: var(--primary-color);
+    background: linear-gradient(45deg, var(--primary-color), var(--cat-pink));
     color: white;
     border-color: var(--primary-color);
+    transform: scale(1.1) rotate(-2deg);
+    padding-right: 35px;
+}
+
+.skill-tag:hover::before {
+    right: 8px;
+    opacity: 1;
 }
 
 /* Experience Section */
@@ -226,8 +315,25 @@ body {
 .experience-item {
     margin-bottom: 40px;
     padding: 30px;
-    background: var(--bg-secondary);
-    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    border: 3px solid var(--border-color);
+    position: relative;
+}
+
+.experience-item::before {
+    content: '🐾';
+    position: absolute;
+    top: -10px;
+    left: 20px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8em;
 }
 
 .experience-header {
@@ -282,8 +388,25 @@ body {
 .education-item {
     margin-bottom: 30px;
     padding: 25px;
-    background: var(--bg-secondary);
-    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    border: 3px solid var(--border-color);
+    position: relative;
+}
+
+.education-item::before {
+    content: '🎓';
+    position: absolute;
+    top: -10px;
+    left: 20px;
+    background: var(--secondary-color);
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8em;
 }
 
 .education-item h3 {
@@ -305,8 +428,31 @@ body {
 
 .interest-item {
     padding: 25px;
-    background: var(--bg-secondary);
-    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    border: 3px solid var(--border-color);
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.interest-item::before {
+    content: '😸';
+    position: absolute;
+    top: -10px;
+    left: 20px;
+    background: var(--accent-color);
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8em;
+}
+
+.interest-item:hover {
+    transform: translateY(-5px) rotate(1deg);
+    box-shadow: 0 10px 20px rgba(255, 107, 157, 0.3);
 }
 
 .interest-item h3 {
@@ -340,16 +486,48 @@ body {
 }
 
 /* Footer */
-.footer {
-    background: var(--bg-secondary);
-    padding: 30px 0;
+.cat-footer {
+    background: linear-gradient(135deg, #ff6b9d 0%, #4ecdc4 100%);
+    padding: 40px 0;
     text-align: center;
     margin-top: 60px;
-    border-top: 1px solid var(--border-color);
+    color: white;
+    position: relative;
+    overflow: hidden;
 }
 
-.footer p {
-    color: var(--text-secondary);
+.footer-cat {
+    position: relative;
+    z-index: 2;
+}
+
+.footer-paws {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 15px 0;
+}
+
+.footer-paws .paw {
+    font-size: 1.5em;
+    animation: pawWiggle 2s infinite;
+    animation-delay: calc(var(--i) * 0.2s);
+}
+
+.footer-paws .paw:nth-child(1) { --i: 0; }
+.footer-paws .paw:nth-child(2) { --i: 1; }
+.footer-paws .paw:nth-child(3) { --i: 2; }
+
+@keyframes pawWiggle {
+    0%, 100% { transform: rotate(0deg) scale(1); }
+    25% { transform: rotate(-10deg) scale(1.1); }
+    75% { transform: rotate(10deg) scale(1.1); }
+}
+
+.cat-footer p {
+    color: white;
+    font-weight: 500;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
 }
 
 /* アニメーション定義 */
@@ -425,22 +603,7 @@ body {
     }
 }
 
-@keyframes particleFloat {
-    0% {
-        transform: translateY(100vh) translateX(0px);
-        opacity: 0;
-    }
-    10% {
-        opacity: 1;
-    }
-    90% {
-        opacity: 1;
-    }
-    100% {
-        transform: translateY(-100px) translateX(50px);
-        opacity: 0;
-    }
-}
+/* 古いアニメーションを除去 */
 
 @keyframes sparkle {
     0%, 100% {
@@ -471,8 +634,8 @@ body {
     }
 }
 
-/* パーティクル */
-.particles {
+/* 肉球パーティクル */
+.paw-prints {
     position: fixed;
     top: 0;
     left: 0;
@@ -482,23 +645,72 @@ body {
     z-index: 1;
 }
 
-.particle {
+.paw-print {
     position: absolute;
-    width: 4px;
-    height: 4px;
-    background: linear-gradient(45deg, #667eea, #764ba2);
-    border-radius: 50%;
-    animation: particleFloat linear infinite;
-    opacity: 0.7;
+    font-size: 1.5em;
+    color: rgba(255, 107, 157, 0.6);
+    opacity: 0;
+    animation: pawAppear 0.5s ease forwards;
+    user-select: none;
+    pointer-events: none;
 }
 
-/* アニメーション背景 */
-.animated-bg {
-    background: linear-gradient(-45deg, #667eea, #764ba2, #f093fb, #f5576c);
-    background-size: 400% 400%;
-    animation: gradientShift 8s ease infinite;
-    position: relative;
-    overflow: hidden;
+@keyframes pawAppear {
+    0% {
+        opacity: 0;
+        transform: scale(0) rotate(0deg);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.2) rotate(180deg);
+    }
+    100% {
+        opacity: 0.8;
+        transform: scale(1) rotate(360deg);
+    }
+}
+
+@keyframes pawFadeOut {
+    0% {
+        opacity: 0.8;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+}
+
+/* 浮遊猫を除去 */
+.floating-cats {
+    display: none;
+}
+
+/* 猫アバター */
+.cat-avatar {
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.cat-icon {
+    width: 200px;
+    height: auto;
+    animation: catIconFloat 3s ease-in-out infinite;
+    filter: drop-shadow(0 10px 30px rgba(255, 107, 157, 0.4));
+    transition: transform 0.3s ease;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+}
+
+@keyframes catIconFloat {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+}
+
+.cat-icon:hover {
+    transform: scale(1.05);
+    filter: drop-shadow(0 15px 40px rgba(255, 107, 157, 0.6)) brightness(1.1);
 }
 
 .animated-bg::before {
@@ -787,7 +999,7 @@ body {
         transform: translateY(-2px) scale(1.02);
     }
     
-    .social-links a:hover {
+    .paw-button:hover {
         transform: translateY(-2px) scale(1.02);
     }
     
@@ -795,13 +1007,16 @@ body {
         display: none;
     }
     
-    .animated-bg::before {
-        animation-duration: 8s;
+    .cat-icon {
+        width: 100px;
     }
     
-    .particle {
-        width: 3px;
-        height: 3px;
+    .paw-print {
+        font-size: 1em;
+    }
+    
+    .floating-cat {
+        font-size: 1.5em;
     }
     
     /* タッチデバイス向け調整 */
@@ -817,13 +1032,13 @@ body {
         
         .skill-tag:hover {
             transform: none;
-            background: var(--primary-color);
+            background: linear-gradient(45deg, var(--primary-color), var(--cat-pink));
             color: white;
         }
         
-        .social-links a:hover {
+        .paw-button:hover {
             transform: none;
-            background-color: rgba(255, 255, 255, 0.1);
+            background-color: rgba(255, 255, 255, 0.2);
         }
     }
 }
