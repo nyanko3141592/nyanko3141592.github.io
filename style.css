@@ -352,6 +352,401 @@ body {
     color: var(--text-secondary);
 }
 
+/* アニメーション定義 */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+@keyframes glow {
+    0%, 100% {
+        box-shadow: 0 0 5px rgba(102, 126, 234, 0.5);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(102, 126, 234, 0.8), 0 0 30px rgba(102, 126, 234, 0.6);
+    }
+}
+
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes particleFloat {
+    0% {
+        transform: translateY(100vh) translateX(0px);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100px) translateX(50px);
+        opacity: 0;
+    }
+}
+
+@keyframes sparkle {
+    0%, 100% {
+        opacity: 0;
+        transform: scale(0);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes typing {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+@keyframes blink {
+    0%, 50% {
+        border-color: transparent;
+    }
+    51%, 100% {
+        border-color: white;
+    }
+}
+
+/* パーティクル */
+.particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    border-radius: 50%;
+    animation: particleFloat linear infinite;
+    opacity: 0.7;
+}
+
+/* アニメーション背景 */
+.animated-bg {
+    background: linear-gradient(-45deg, #667eea, #764ba2, #f093fb, #f5576c);
+    background-size: 400% 400%;
+    animation: gradientShift 8s ease infinite;
+    position: relative;
+    overflow: hidden;
+}
+
+.animated-bg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="white" opacity="0.3"><animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite"/></circle><circle cx="80" cy="30" r="1.5" fill="white" opacity="0.5"><animate attributeName="opacity" values="0.5;1;0.5" dur="3s" repeatCount="indefinite"/></circle><circle cx="40" cy="70" r="1" fill="white" opacity="0.4"><animate attributeName="opacity" values="0.4;1;0.4" dur="2.5s" repeatCount="indefinite"/></circle></svg>');
+    animation: float 6s ease-in-out infinite;
+}
+
+/* フェードインアニメーション */
+.fade-in-up {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.8s ease forwards;
+}
+
+.delay-200 {
+    animation-delay: 0.2s;
+}
+
+.delay-400 {
+    animation-delay: 0.4s;
+}
+
+.delay-600 {
+    animation-delay: 0.6s;
+}
+
+/* スクロールアニメーション */
+.reveal {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s ease;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ステージャーアニメーション */
+.stagger-animation .project-card {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease;
+}
+
+.stagger-animation .project-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ホバーグロー効果 */
+.hover-glow {
+    position: relative;
+    transition: all 0.3s ease;
+    z-index: 1;
+}
+
+.hover-glow::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, #667eea, #764ba2, #f093fb, #f5576c);
+    border-radius: 14px;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.hover-glow:hover::before {
+    opacity: 0.3;
+}
+
+.hover-glow:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 15px 35px rgba(102, 126, 234, 0.4);
+    background-color: var(--bg-primary);
+}
+
+/* タイピングエフェクト */
+.typing-text {
+    display: inline-block;
+    border-right: 2px solid white;
+    padding-right: 5px;
+    animation: blink 1s infinite;
+}
+
+/* スキルタグの拡張アニメーション */
+.skill-tag {
+    position: relative;
+    overflow: hidden;
+    transform: translateY(0);
+    transition: all 0.3s ease;
+}
+
+.skill-tag::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.skill-tag:hover::before {
+    left: 100%;
+}
+
+.skill-tag:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 5px 15px rgba(0,102,255,0.3);
+}
+
+/* プロジェクトカードの拡張効果 */
+.project-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.project-card::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(102,126,234,0.05) 0%, transparent 70%);
+    transform: scale(0);
+    transition: transform 0.6s ease;
+    z-index: 0;
+}
+
+.project-card:hover::after {
+    transform: scale(1);
+}
+
+.project-card * {
+    position: relative;
+    z-index: 1;
+}
+
+/* バッジアニメーション */
+.project-badge {
+    position: relative;
+    overflow: hidden;
+    animation: pulse 2s infinite;
+}
+
+.project-badge::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        left: -100%;
+    }
+    100% {
+        left: 100%;
+    }
+}
+
+/* ソーシャルリンクの拡張 */
+.social-links a {
+    position: relative;
+    overflow: hidden;
+}
+
+.social-links a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.social-links a:hover::before {
+    left: 100%;
+}
+
+.social-links a:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 25px rgba(255,255,255,0.3);
+}
+
+/* セクションタイトルアニメーション */
+.section-title {
+    position: relative;
+    overflow: hidden;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #667eea, #764ba2);
+    transition: all 0.6s ease;
+    transform: translateX(-50%);
+}
+
+.section.visible .section-title::after {
+    width: 60px;
+}
+
+/* エクスペリエンスアイテムアニメーション */
+.experience-item, .education-item, .interest-item {
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.experience-item:hover, .education-item:hover, .interest-item:hover {
+    transform: translateX(10px);
+    box-shadow: -5px 5px 20px rgba(102,126,234,0.2);
+}
+
+/* スムーススクロール */
+html {
+    scroll-behavior: smooth;
+}
+
+/* ローディングアニメーション */
+body {
+    opacity: 0;
+    animation: fadeInUp 1s ease forwards;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     .hero-title {
@@ -381,5 +776,54 @@ body {
     
     .experience-period {
         margin-top: 5px;
+    }
+    
+    /* モバイル向けアニメーション調整 */
+    .hover-glow:hover {
+        transform: translateY(-4px) scale(1.01);
+    }
+    
+    .skill-tag:hover {
+        transform: translateY(-2px) scale(1.02);
+    }
+    
+    .social-links a:hover {
+        transform: translateY(-2px) scale(1.02);
+    }
+    
+    .project-card::after {
+        display: none;
+    }
+    
+    .animated-bg::before {
+        animation-duration: 8s;
+    }
+    
+    .particle {
+        width: 3px;
+        height: 3px;
+    }
+    
+    /* タッチデバイス向け調整 */
+    @media (hover: none) {
+        .hover-glow:hover::before {
+            opacity: 0;
+        }
+        
+        .hover-glow:hover {
+            transform: none;
+            box-shadow: var(--card-hover-shadow);
+        }
+        
+        .skill-tag:hover {
+            transform: none;
+            background: var(--primary-color);
+            color: white;
+        }
+        
+        .social-links a:hover {
+            transform: none;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
     }
 }
