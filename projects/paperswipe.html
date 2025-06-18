@@ -20,7 +20,7 @@
     <meta property="twitter:description" content="スワイプで論文を楽しく発見・管理できるiOSアプリ">
     
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <link rel="stylesheet" href="paperswipe-style.css">
+    <link rel="stylesheet" href="../styles/paperswipe-style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -28,7 +28,8 @@
     <header class="header">
         <nav class="nav">
             <div class="nav-brand">
-                <h1 class="logo">📄 PaperSwipe</h1>
+                <img src="PaperSwipe/PaperSwipeIcon.webp" alt="PaperSwipe" class="nav-logo-icon">
+                <h1 class="logo">PaperSwipe</h1>
             </div>
             <div class="nav-links">
                 <a href="#features" class="nav-link">機能</a>
@@ -50,22 +51,13 @@
                     直感的な操作で、あなたの研究に役立つ論文を見つけましょう。
                 </p>
                 <div class="hero-actions">
-                    <a href="#download" class="btn btn-primary">App Store からダウンロード</a>
+                    <a href="https://apps.apple.com/jp/app/paperswipe/id6745439518" target="_blank" rel="noopener" class="btn btn-primary">App Store からダウンロード</a>
                     <a href="#features" class="btn btn-secondary">機能を詳しく見る</a>
                 </div>
             </div>
             <div class="hero-image">
-                <div class="phone-mockup">
-                    <div class="screen">
-                        <div class="app-demo">
-                            <div class="demo-card">
-                                <h3>Attention Is All You Need</h3>
-                                <p class="authors">Vaswani et al.</p>
-                                <p class="abstract">The dominant sequence transduction models are based on complex recurrent or convolutional neural networks...</p>
-                                <div class="swipe-hint">← スワイプしてみよう →</div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="mockup-container">
+                    <img src="PaperSwipe/swiping.png" alt="PaperSwipe アプリのスクリーンショット" class="mockup-image">
                 </div>
             </div>
         </div>
@@ -102,7 +94,7 @@
                 <div class="feature-card">
                     <div class="feature-icon">🌐</div>
                     <h3>AI自動翻訳</h3>
-                    <p>Grok APIによる高精度な学術論文翻訳。日英他多言語に対応し、言語の壁を取り除きます。</p>
+                    <p>Gemini APIによる高精度な学術論文翻訳。日英他多言語に対応し、言語の壁を取り除きます。</p>
                 </div>
 
                 <!-- Trending -->
@@ -188,7 +180,7 @@
                 <div class="stat-item">
                     <div class="stat-number">AI</div>
                     <div class="stat-label">高精度翻訳</div>
-                    <div class="stat-desc">Grok API活用</div>
+                    <div class="stat-desc">Gemini API活用</div>
                 </div>
                 <div class="stat-item">
                     <div class="stat-number">iOS</div>
@@ -210,7 +202,7 @@
                 </p>
                 
                 <div class="download-buttons">
-                    <a href="#" class="app-store-btn">
+                    <a href="https://apps.apple.com/jp/app/paperswipe/id6745439518" target="_blank" rel="noopener" class="app-store-btn">
                         <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store" style="height: 60px;">
                     </a>
                 </div>
@@ -252,7 +244,7 @@
                         <span class="faq-toggle">+</span>
                     </div>
                     <div class="faq-answer">
-                        <p>Grok APIを活用した学術特化の翻訳機能を提供しています。専門用語や学術的な表現も適切に翻訳され、論文の内容を正確に理解できます。</p>
+                        <p>Gemini APIを活用した学術特化の翻訳機能を提供しています。専門用語や学術的な表現も適切に翻訳され、論文の内容を正確に理解できます。</p>
                     </div>
                 </div>
 

@@ -27,6 +27,7 @@ body {
     background: var(--bg-primary);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    word-break: auto-phrase;
 }
 
 .container {
@@ -53,6 +54,18 @@ body {
     padding: 1rem 2rem;
     max-width: 1200px;
     margin: 0 auto;
+}
+
+.nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.nav-logo-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
 }
 
 .logo {
@@ -197,70 +210,24 @@ body {
     transform: translateY(-2px);
 }
 
-/* Phone Mockup */
-.phone-mockup {
-    width: 300px;
-    height: 600px;
-    background: #333;
-    border-radius: 30px;
-    padding: 20px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-    margin: 0 auto;
-    position: relative;
-    overflow: hidden;
-}
-
-.screen {
-    width: 100%;
-    height: 100%;
-    background: white;
-    border-radius: 20px;
-    overflow: hidden;
-    position: relative;
-}
-
-.app-demo {
-    height: 100%;
+/* Mockup Container */
+.mockup-container {
     display: flex;
-    align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    align-items: center;
+    max-width: 400px;
+    margin: 0 auto;
 }
 
-.demo-card {
-    background: white;
-    border-radius: 20px;
-    padding: 2rem;
-    margin: 1rem;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+.mockup-image {
+    width: 100%;
+    height: auto;
+    max-width: 300px;
     transition: var(--transition);
-    text-align: center;
 }
 
-.demo-card h3 {
-    color: var(--text-primary);
-    margin-bottom: 0.5rem;
-    font-size: 1.1rem;
-}
-
-.demo-card .authors {
-    color: var(--text-secondary);
-    font-size: 0.9rem;
-    margin-bottom: 1rem;
-}
-
-.demo-card .abstract {
-    color: var(--text-secondary);
-    font-size: 0.8rem;
-    line-height: 1.5;
-    margin-bottom: 1.5rem;
-}
-
-.swipe-hint {
-    color: var(--primary-color);
-    font-weight: 600;
-    font-size: 0.9rem;
-    animation: pulse 2s infinite;
+.mockup-image:hover {
+    transform: scale(1.02);
 }
 
 @keyframes pulse {
@@ -626,9 +593,8 @@ body {
         justify-content: center;
     }
     
-    .phone-mockup {
-        width: 250px;
-        height: 500px;
+    .mockup-image {
+        max-width: 250px;
     }
     
     .section-title {
@@ -703,9 +669,8 @@ body {
         font-size: 0.9rem;
     }
     
-    .phone-mockup {
-        width: 200px;
-        height: 400px;
+    .mockup-image {
+        max-width: 200px;
     }
     
     .section-title {
