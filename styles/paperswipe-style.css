@@ -533,6 +533,85 @@ body {
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
 
+/* Milestone Achievement */
+.milestone-achievement {
+    background: linear-gradient(135deg, rgba(255, 107, 157, 0.1), rgba(78, 205, 196, 0.1));
+    border-radius: var(--border-radius);
+    padding: 2.5rem;
+    margin: 3rem 0;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    border: 2px solid rgba(255, 107, 157, 0.2);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.milestone-achievement::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent 40%, rgba(255, 255, 255, 0.1) 50%, transparent 60%);
+    animation: shine 3s ease-in-out infinite;
+}
+
+@keyframes shine {
+    0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+    50% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+    100% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+}
+
+.milestone-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 2rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 2;
+}
+
+.milestone-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    position: relative;
+    z-index: 2;
+}
+
+.milestone-icon {
+    font-size: 4rem;
+    animation: bounce 2s ease-in-out infinite;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-10px); }
+    60% { transform: translateY(-5px); }
+}
+
+.milestone-text {
+    text-align: left;
+    max-width: 500px;
+}
+
+.milestone-message {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    font-weight: 500;
+}
+
+.milestone-note {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    font-style: italic;
+}
+
 /* FAQ Section */
 .faq {
     padding: 80px 0;
@@ -756,6 +835,27 @@ body {
     
     .footer-links {
         justify-content: center;
+    }
+    
+    .milestone-achievement {
+        padding: 1.5rem;
+    }
+    
+    .milestone-title {
+        font-size: 1.5rem;
+    }
+    
+    .milestone-content {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .milestone-text {
+        text-align: center;
+    }
+    
+    .milestone-icon {
+        font-size: 3rem;
     }
 }
 
