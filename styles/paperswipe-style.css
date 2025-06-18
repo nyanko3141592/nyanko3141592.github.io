@@ -107,6 +107,24 @@ body {
     width: 100%;
 }
 
+.lang-switch {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: var(--transition);
+    margin-left: 1rem;
+}
+
+.lang-switch:hover {
+    background: var(--secondary-color);
+    transform: translateY(-2px);
+}
+
 /* Hero Section */
 .hero {
     background: linear-gradient(135deg, #ff6b9d 0%, #4ecdc4 50%, #ffd93d 100%);
@@ -435,6 +453,86 @@ body {
     font-size: 0.9rem;
 }
 
+/* Support Section */
+.support-section {
+    padding: 80px 0;
+    background: linear-gradient(135deg, #fff8e1 0%, #ffecb3 100%);
+}
+
+.support-content {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.support-description {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--text-primary);
+    margin-bottom: 3rem;
+}
+
+.support-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.support-stat {
+    background: white;
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 15px rgba(255, 193, 61, 0.2);
+    transition: var(--transition);
+}
+
+.support-stat:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(255, 193, 61, 0.3);
+}
+
+.support-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.support-stat h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+}
+
+.support-stat p {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.support-appeal {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--text-primary);
+    margin-bottom: 2.5rem;
+    font-weight: 500;
+}
+
+.support-button {
+    margin-top: 2rem;
+}
+
+.support-button img {
+    transition: var(--transition);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.support-button img:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
 /* FAQ Section */
 .faq {
     padding: 80px 0;
@@ -521,6 +619,20 @@ body {
     margin-bottom: 2rem;
     flex-wrap: wrap;
     gap: 2rem;
+}
+
+.footer-support {
+    display: flex;
+    align-items: center;
+}
+
+.footer-support img {
+    transition: var(--transition);
+}
+
+.footer-support img:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.1);
 }
 
 .footer-brand h3 {
