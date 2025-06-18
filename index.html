@@ -20,285 +20,565 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500&family=Kitten+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap" rel="stylesheet">
 </head>
 
 <body>
     <div class="paw-prints" id="pawPrints"></div>
-    <div class="floating-cats" id="floatingCats"></div>
-    <header class="hero cat-gradient">
-        <div class="container">
-            <div class="cat-avatar fade-in-up">
-                <img src="images/icon.svg" alt="猫のアイコン" class="cat-icon" />
+    
+    <!-- Persona 5 Full Screen Navigation -->
+    <nav class="persona-nav-overlay" id="navOverlay">
+        <div class="nav-diagonal-bg"></div>
+        <div class="nav-content">
+            <div class="nav-header">
+                <div class="nav-logo-section">
+                    <div class="nav-logo">NT</div>
+                    <div class="nav-tagline">PORTFOLIO</div>
+                </div>
+                <button class="nav-close" id="navClose">✕</button>
             </div>
-            <h1 class="hero-title fade-in-up delay-200">高橋 直希</h1>
-            <p class="hero-subtitle fade-in-up delay-400">Naoki Takahashi | <span class="typing-text">電電猫猫</span></p>
-            <p class="hero-description fade-in-up delay-600">
-                早稲田大学基幹理工学部数学科に在学しながら、株式会社CoeFontの創業メンバーとしてAI音声技術を活用したサービス開発に携わる。<br>
-                個人でもiOS/visionOSアプリ開発や未踏IT人材発掘・育成事業への採択など、ソフトウェアからハードウェアまで幅広い分野で「面白いもの」を創造し続けています。
-            </p>
-            <div class="social-links fade-in-up delay-800">
-                <a href="https://twitter.com/nya3_neko2" target="_blank" rel="noopener" class="paw-button">
-                    <span class="paw-icon">&gt;</span> X (Twitter)
+            
+            <div class="nav-menu-grid">
+                <div class="nav-main-menu">
+                    <div class="nav-menu-item active" data-section="profile">
+                        <div class="menu-icon">01</div>
+                        <div class="menu-text">
+                            <div class="menu-title">PROFILE</div>
+                            <div class="menu-subtitle">Personal Information</div>
+                        </div>
+                        <div class="menu-arrow">→</div>
+                    </div>
+                    
+                    <div class="nav-menu-item" data-section="achievements">
+                        <div class="menu-icon">02</div>
+                        <div class="menu-text">
+                            <div class="menu-title">ACHIEVEMENTS</div>
+                            <div class="menu-subtitle">Awards & Projects</div>
+                        </div>
+                        <div class="menu-arrow">→</div>
+                    </div>
+                    
+                    <div class="nav-menu-item" data-section="skills">
+                        <div class="menu-icon">03</div>
+                        <div class="menu-text">
+                            <div class="menu-title">SKILLS</div>
+                            <div class="menu-subtitle">Technical Abilities</div>
+                        </div>
+                        <div class="menu-arrow">→</div>
+                    </div>
+                    
+                    <div class="nav-menu-item" data-section="experience">
+                        <div class="menu-icon">04</div>
+                        <div class="menu-text">
+                            <div class="menu-title">EXPERIENCE</div>
+                            <div class="menu-subtitle">Work History</div>
+                        </div>
+                        <div class="menu-arrow">→</div>
+                    </div>
+                    
+                    <div class="nav-menu-item" data-section="education">
+                        <div class="menu-icon">05</div>
+                        <div class="menu-text">
+                            <div class="menu-title">EDUCATION</div>
+                            <div class="menu-subtitle">Academic Background</div>
+                        </div>
+                        <div class="menu-arrow">→</div>
+                    </div>
+                </div>
+                
+                <div class="nav-side-info">
+                    <div class="nav-status">
+                        <div class="status-item">
+                            <div class="status-label">LEVEL</div>
+                            <div class="status-value">21</div>
+                        </div>
+                        <div class="status-item">
+                            <div class="status-label">CLASS</div>
+                            <div class="status-value">ENGINEER</div>
+                        </div>
+                        <div class="status-item">
+                            <div class="status-label">STATUS</div>
+                            <div class="status-value">ACTIVE</div>
+                        </div>
+                    </div>
+                    
+                    <div class="nav-social">
+                        <a href="https://twitter.com/nya3_neko2" class="social-nav-item">
+                            <span>TWITTER</span>
+                        </a>
+                        <a href="https://note.com/electrical_cat" class="social-nav-item">
+                            <span>NOTE</span>
+                        </a>
+                        <a href="https://www.linkedin.com/in/naoki-takahashi-143774225/" class="social-nav-item">
+                            <span>LINKEDIN</span>
+                        </a>
+                        <a href="https://github.com/nyanko3141592" class="social-nav-item">
+                            <span>GITHUB</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Main Navigation Bar -->
+    <header class="main-nav">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <span class="brand-logo">NT</span>
+                <span class="brand-text">PORTFOLIO</span>
+            </div>
+            <button class="menu-toggle" id="menuToggle">
+                <span class="menu-line"></span>
+                <span class="menu-line"></span>
+                <span class="menu-line"></span>
+                <span class="menu-text">MENU</span>
+            </button>
+        </div>
+    </header>
+    
+    <!-- Persona 5 Style Hero Section -->
+    <section class="persona-hero" id="profile">
+        <div class="hero-diagonal-overlay"></div>
+        <div class="hero-background-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+        </div>
+        
+        <div class="hero-content-wrapper">
+            <div class="hero-main-content">
+                <div class="hero-text-section">
+                    <div class="hero-label">DEVELOPER / CREATOR</div>
+                    <h1 class="hero-title">
+                        <span class="title-kanji">電電猫猫</span>
+                        <span class="title-romaji">NAOKI TAKAHASHI</span>
+                    </h1>
+                    <div class="hero-description">
+                        <p>早稲田大学基幹理工学部数学科に在学しながら、株式会社CoeFontの創業メンバーとしてAI音声技術を活用したサービス開発に携わる。</p>
+                        <p>個人でもiOS/visionOSアプリ開発や未踏IT人材発掘・育成事業への採択など、ソフトウェアからハードウェアまで幅広い分野で「面白いもの」を創造し続けています。</p>
+                    </div>
+                </div>
+                
+                <div class="hero-profile-section">
+                    <div class="profile-card-main">
+                        <div class="profile-image-wrapper">
+                            <img src="images/icon.svg" alt="Profile" class="profile-avatar" />
+                            <div class="avatar-glow"></div>
+                        </div>
+                        
+                        <div class="profile-stats-grid">
+                            <div class="stat-card">
+                                <div class="stat-number">21</div>
+                                <div class="stat-label">AGE</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number">04</div>
+                                <div class="stat-label">YEARS EXP</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number">15+</div>
+                                <div class="stat-label">PROJECTS</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number">05</div>
+                                <div class="stat-label">AWARDS</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hero-contact-bar">
+                <a href="https://twitter.com/nya3_neko2" class="contact-item">
+                    <span class="contact-icon">→</span>
+                    <span class="contact-text">TWITTER</span>
                 </a>
-                <a href="https://note.com/electrical_cat" target="_blank" rel="noopener" class="paw-button">
-                    <span class="paw-icon">&gt;</span> note
+                <a href="https://note.com/electrical_cat" class="contact-item">
+                    <span class="contact-icon">→</span>
+                    <span class="contact-text">NOTE</span>
                 </a>
-                <a href="https://www.linkedin.com/in/naoki-takahashi-143774225/" target="_blank" rel="noopener" class="paw-button">
-                    <span class="paw-icon">&gt;</span> LinkedIn
+                <a href="https://www.linkedin.com/in/naoki-takahashi-143774225/" class="contact-item">
+                    <span class="contact-icon">→</span>
+                    <span class="contact-text">LINKEDIN</span>
                 </a>
-                <a href="https://bento.me/nya3neko2" target="_blank" rel="noopener" class="paw-button">
-                    <span class="paw-icon">&gt;</span> Bento
-                </a>
-                <a href="https://github.com/nyanko3141592" target="_blank" rel="noopener" class="paw-button">
-                    <span class="paw-icon">&gt;</span> GitHub
+                <a href="https://github.com/nyanko3141592" class="contact-item">
+                    <span class="contact-icon">→</span>
+                    <span class="contact-text">GITHUB</span>
                 </a>
             </div>
         </div>
-    </header>
+    </section>
 
-    <main class="container">
-        <section class="section reveal">
-            <h2 class="section-title cat-title">ACHIEVEMENTS</h2>
+    <main class="main-content">
+        <!-- Achievements Section -->
+        <section class="content-section" id="achievements">
+            <div class="section-header">
+                <div class="section-number">02</div>
+                <h2 class="section-title">ACHIEVEMENTS</h2>
+                <div class="section-subtitle">Awards & Notable Projects</div>
+            </div>
             
-            <div class="project-grid stagger-animation">
-                <div class="project-card hover-glow">
-                    <div class="project-header">
-                        <h3>未踏IT人材発掘・育成事業 2024年度採択</h3>
-                        <span class="project-badge">Award</span>
+            <div class="achievements-grid">
+                <div class="achievement-card featured">
+                    <div class="card-corner"></div>
+                    <div class="card-header">
+                        <div class="card-category">GOVERNMENT AWARD</div>
+                        <div class="card-year">2024</div>
                     </div>
-                    <p class="project-description">
-                        ニューラル言語モデルを用いた個人に最適化された日本語入力システムを開発するプロジェクトで採択されました。
-                    </p>
-                    <ul class="project-details">
-                        <li>プロジェクト名: ニューラル言語モデルによる個人最適な日本語入力システムの開発</li>
-                        <li>共同開発者: 三輪 敬太</li>
-                        <li>関連論文: 言語処理学会第31回年次大会 (NLP2025) にて若手奨励賞を受賞</li>
-                    </ul>
-                    <a href="https://www.ipa.go.jp/jinzai/mitou/it/2024/koubokekka.html" target="_blank" rel="noopener" class="project-link">IPA 採択プロジェクト概要 →</a>
-                </div>
-
-                <div class="project-card hover-glow">
-                    <div class="project-header">
-                        <div class="project-title-with-icon">
-                            <img src="projects/PaperSwipe/PaperSwipeIcon.webp" alt="PaperSwipe" class="project-icon">
-                            <h3>PaperSwipe</h3>
+                    <h3 class="card-title">未踏IT人材発掘・育成事業</h3>
+                    <div class="card-subtitle">2024年度採択</div>
+                    <div class="card-description">
+                        <p>ニューラル言語モデルを用いた個人に最適化された日本語入力システムを開発するプロジェクトで採択されました。</p>
+                        <div class="achievement-details">
+                            <div class="detail-item">
+                                <span class="detail-label">プロジェクト名:</span>
+                                <span class="detail-value">ニューラル言語モデルによる個人最適な日本語入力システムの開発</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">共同開発者:</span>
+                                <span class="detail-value">三輪 敬太</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">関連論文:</span>
+                                <span class="detail-value">言語処理学会第31回年次大会 (NLP2025) にて若手奨励賞を受賞</span>
+                            </div>
                         </div>
-                        <span class="project-badge">iOS App</span>
                     </div>
-                    <p class="project-description">
-                        学術論文版Tinder。スワイプ操作で論文を楽しく発見・管理できるiOSアプリです。
-                    </p>
-                    <ul class="project-details">
-                        <li>arXiv、bioRxiv、PubMedから最新論文を収集</li>
-                        <li>AI翻訳機能で言語の壁を解消</li>
-                        <li>Tinder風のスワイプUIで直感的な操作</li>
-                    </ul>
-                    <a href="projects/paperswipe.html" class="project-link">専用ページを見る →</a>
+                    <a href="https://www.ipa.go.jp/jinzai/mitou/it/2024/koubokekka.html" target="_blank" class="card-link">
+                        IPA 採択プロジェクト概要 →
+                    </a>
                 </div>
 
-                <div class="project-card hover-glow">
-                    <div class="project-header">
-                        <h3>おしゃべりひろゆきメーカー / AIひろゆき</h3>
-                        <span class="project-badge">Viral</span>
+                <div class="achievement-card">
+                    <div class="card-corner"></div>
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <img src="projects/PaperSwipe/PaperSwipeIcon.webp" alt="PaperSwipe">
+                        </div>
+                        <div class="card-category">iOS APP</div>
                     </div>
-                    <p class="project-description">
-                        AI音声合成技術を活用し、社会的に大きな注目を集めたバイラルコンテンツを企画・開発。
-                    </p>
-                    <ul class="project-details">
-                        <li>担当: 企画・開発</li>
-                        <li>受賞: ACC TOKYO CREATIVITY AWARDSにて総務大臣賞 / ACCグランプリを含む2部門で受賞</li>
-                    </ul>
-                    <a href="https://coefont.cloud/maker/hiroyuki" target="_blank" rel="noopener" class="project-link">おしゃべりひろゆきメーカー →</a>
+                    <h3 class="card-title">PaperSwipe</h3>
+                    <div class="card-subtitle">学術論文版Tinder</div>
+                    <div class="card-description">
+                        <p>スワイプ操作で論文を楽しく発見・管理できるiOSアプリです。</p>
+                        <div class="achievement-details">
+                            <div class="detail-item">
+                                <span class="detail-label">対応:</span>
+                                <span class="detail-value">arXiv、bioRxiv、PubMedから最新論文を収集</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">機能:</span>
+                                <span class="detail-value">AI翻訳機能で言語の壁を解消</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">UI:</span>
+                                <span class="detail-value">Tinder風のスワイプUIで直感的な操作</span>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="projects/paperswipe.html" class="card-link">
+                        専用ページを見る →
+                    </a>
                 </div>
 
-                <div class="project-card hover-glow">
-                    <div class="project-header">
-                        <h3>azooEditor for Apple Vision Pro</h3>
-                        <span class="project-badge">visionOS</span>
+                <div class="achievement-card">
+                    <div class="card-corner"></div>
+                    <div class="card-header">
+                        <div class="card-category viral">VIRAL CONTENT</div>
                     </div>
-                    <p class="project-description">
-                        Apple Vision Pro向けの日本語入力エディタを開発し、App Storeでリリース。OSSの日本語変換エンジンazooKeyの開発にも貢献。
-                    </p>
-                    <ul class="project-details">
-                        <li>役割: 開発</li>
-                        <li>技術: visionOS, SwiftUI</li>
-                    </ul>
-                    <a href="https://www.macotakara.jp/VisionApp/entry-46122.html" target="_blank" rel="noopener" class="project-link">azooEditor on Mac OTAKARA →</a>
+                    <h3 class="card-title">おしゃべりひろゆきメーカー</h3>
+                    <div class="card-subtitle">AIひろゆき</div>
+                    <div class="card-description">
+                        <p>AI音声合成技術を活用し、社会的に大きな注目を集めたバイラルコンテンツを企画・開発。</p>
+                        <div class="achievement-details">
+                            <div class="detail-item">
+                                <span class="detail-label">担当:</span>
+                                <span class="detail-value">企画・開発</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">受賞:</span>
+                                <span class="detail-value">ACC TOKYO CREATIVITY AWARDSにて総務大臣賞 / ACCグランプリを含む2部門で受賞</span>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="https://coefont.cloud/maker/hiroyuki" target="_blank" class="card-link">
+                        おしゃべりひろゆきメーカー →
+                    </a>
                 </div>
 
-                <div class="project-card hover-glow">
-                    <div class="project-header">
-                        <h3>WWDC Swift Student Challenge 2023 Winner</h3>
-                        <span class="project-badge">Apple</span>
+                <div class="achievement-card">
+                    <div class="card-corner"></div>
+                    <div class="card-header">
+                        <div class="card-category vision">visionOS</div>
                     </div>
-                    <p class="project-description">
-                        Appleが主催する世界的な開発者向けコンテストにて、作成したSwift Playgrounds作品が評価され受賞しました。
-                    </p>
-                    <ul class="project-details">
-                        <li>役割: 開発</li>
-                        <li>技術: Swift, SwiftUI</li>
-                    </ul>
-                    <a href="https://news.mynavi.jp/article/20230612-wwdc2023_swiftstudentchallenge/" target="_blank" rel="noopener" class="project-link">受賞者インタビュー →</a>
+                    <h3 class="card-title">azooEditor</h3>
+                    <div class="card-subtitle">Apple Vision Pro</div>
+                    <div class="card-description">
+                        <p>Apple Vision Pro向けの日本語入力エディタを開発し、App Storeでリリース。OSSの日本語変換エンジンazooKeyの開発にも貢献。</p>
+                        <div class="achievement-details">
+                            <div class="detail-item">
+                                <span class="detail-label">役割:</span>
+                                <span class="detail-value">開発</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">技術:</span>
+                                <span class="detail-value">visionOS, SwiftUI</span>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="https://www.macotakara.jp/VisionApp/entry-46122.html" target="_blank" class="card-link">
+                        azooEditor on Mac OTAKARA →
+                    </a>
                 </div>
 
-                <div class="project-card hover-glow">
-                    <div class="project-header">
-                        <h3>アプリ甲子園 2019 全国3位</h3>
-                        <span class="project-badge">Contest</span>
+                <div class="achievement-card">
+                    <div class="card-corner"></div>
+                    <div class="card-header">
+                        <div class="card-category apple">APPLE</div>
+                        <div class="card-year">2023</div>
                     </div>
-                    <p class="project-description">
-                        ARを活用したナビゲーションアプリ「HybridMap」を開発し、高校生のアプリ開発コンテストで全国3位に入賞しました。
-                    </p>
-                    <ul class="project-details">
-                        <li>役割: 開発</li>
-                    </ul>
-                    <a href="https://life-is-tech.com/news/interview/appko2019_interview_vol1" target="_blank" rel="noopener" class="project-link">アプリ甲子園®2019 決勝大会レポート →</a>
+                    <h3 class="card-title">WWDC Swift Student Challenge</h3>
+                    <div class="card-subtitle">2023 Winner</div>
+                    <div class="card-description">
+                        <p>Appleが主催する世界的な開発者向けコンテストにて、作成したSwift Playgrounds作品が評価され受賞しました。</p>
+                        <div class="achievement-details">
+                            <div class="detail-item">
+                                <span class="detail-label">役割:</span>
+                                <span class="detail-value">開発</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">技術:</span>
+                                <span class="detail-value">Swift, SwiftUI</span>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="https://news.mynavi.jp/article/20230612-wwdc2023_swiftstudentchallenge/" target="_blank" class="card-link">
+                        受賞者インタビュー →
+                    </a>
+                </div>
+
+                <div class="achievement-card">
+                    <div class="card-corner"></div>
+                    <div class="card-header">
+                        <div class="card-category contest">CONTEST</div>
+                        <div class="card-year">2019</div>
+                    </div>
+                    <h3 class="card-title">アプリ甲子園</h3>
+                    <div class="card-subtitle">全国3位</div>
+                    <div class="card-description">
+                        <p>ARを活用したナビゲーションアプリ「HybridMap」を開発し、高校生のアプリ開発コンテストで全国3位に入賞しました。</p>
+                        <div class="achievement-details">
+                            <div class="detail-item">
+                                <span class="detail-label">役割:</span>
+                                <span class="detail-value">開発</span>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="https://life-is-tech.com/news/interview/appko2019_interview_vol1" target="_blank" class="card-link">
+                        アプリ甲子園®2019 決勝大会レポート →
+                    </a>
                 </div>
             </div>
         </section>
 
-        <section class="section reveal">
-            <h2 class="section-title cat-title">SKILLS</h2>
-            <div class="skills-grid reveal">
+        <!-- Skills Section -->
+        <section class="content-section" id="skills">
+            <div class="section-header">
+                <div class="section-number">03</div>
+                <h2 class="section-title">SKILLS</h2>
+                <div class="section-subtitle">Technical Abilities & Expertise</div>
+            </div>
+            
+            <div class="skills-grid">
                 <div class="skill-category">
-                    <h3>プログラミング言語</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Swift</span>
-                        <span class="skill-tag">Python</span>
+                    <h3 class="category-title">プログラミング言語</h3>
+                    <div class="skill-list">
+                        <div class="skill-item">Swift</div>
+                        <div class="skill-item">Python</div>
                     </div>
                 </div>
+                
                 <div class="skill-category">
-                    <h3>プラットフォーム/フレームワーク</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">iOS</span>
-                        <span class="skill-tag">SwiftUI</span>
-                        <span class="skill-tag">visionOS</span>
-                        <span class="skill-tag">AppKit</span>
+                    <h3 class="category-title">プラットフォーム/フレームワーク</h3>
+                    <div class="skill-list">
+                        <div class="skill-item">iOS</div>
+                        <div class="skill-item">SwiftUI</div>
+                        <div class="skill-item">visionOS</div>
+                        <div class="skill-item">AppKit</div>
                     </div>
                 </div>
+                
                 <div class="skill-category">
-                    <h3>ツール/サービス</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Git</span>
-                        <span class="skill-tag">GitHub</span>
-                        <span class="skill-tag">Xcode</span>
-                        <span class="skill-tag">Salesforce</span>
-                        <span class="skill-tag">HubSpot</span>
+                    <h3 class="category-title">ツール/サービス</h3>
+                    <div class="skill-list">
+                        <div class="skill-item">Git</div>
+                        <div class="skill-item">GitHub</div>
+                        <div class="skill-item">Xcode</div>
+                        <div class="skill-item">Salesforce</div>
+                        <div class="skill-item">HubSpot</div>
                     </div>
                 </div>
+                
                 <div class="skill-category">
-                    <h3>その他</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">機械学習</span>
-                        <span class="skill-tag">自然言語処理</span>
-                        <span class="skill-tag">アプリケーション企画</span>
-                        <span class="skill-tag">マーケティング</span>
-                        <span class="skill-tag">チームマネジメント</span>
+                    <h3 class="category-title">その他</h3>
+                    <div class="skill-list">
+                        <div class="skill-item">機械学習</div>
+                        <div class="skill-item">自然言語処理</div>
+                        <div class="skill-item">アプリケーション企画</div>
+                        <div class="skill-item">マーケティング</div>
+                        <div class="skill-item">チームマネジメント</div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="section reveal">
-            <h2 class="section-title cat-title">EXPERIENCE</h2>
-            <div class="experience-list reveal">
+        <!-- Experience Section -->
+        <section class="content-section" id="experience">
+            <div class="section-header">
+                <div class="section-number">04</div>
+                <h2 class="section-title">EXPERIENCE</h2>
+                <div class="section-subtitle">Professional Work History</div>
+            </div>
+            
+            <div class="experience-timeline">
                 <div class="experience-item">
-                    <div class="experience-header">
-                        <h3>株式会社CoeFont</h3>
-                        <span class="experience-period">2020年 - 現在</span>
+                    <div class="experience-date">2020 - PRESENT</div>
+                    <div class="experience-content">
+                        <h3 class="company-name">株式会社CoeFont</h3>
+                        <div class="role-title">創業メンバー / 開発・マーケティング・セールスマネージャー</div>
+                        <div class="experience-description">
+                            <p>創業期より参画し、開発からセールス、マーケティング、マネジメントまで幅広く担当</p>
+                            <ul class="experience-highlights">
+                                <li>「おしゃべりひろゆきメーカー」を企画・開発し、ACCグランプリ受賞に貢献</li>
+                                <li>Salesforce等を活用した社内DXを推進し、業務効率化を実現</li>
+                                <li>5名のチームマネジメントを経験</li>
+                            </ul>
+                        </div>
                     </div>
-                    <p class="experience-role">創業メンバー / 開発・マーケティング・セールスマネージャー</p>
-                    <ul class="experience-details">
-                        <li>創業期より参画し、開発からセールス、マーケティング、マネジメントまで幅広く担当</li>
-                        <li>「おしゃべりひろゆきメーカー」を企画・開発し、ACCグランプリ受賞に貢献</li>
-                        <li>Salesforce等を活用した社内DXを推進し、業務効率化を実現</li>
-                        <li>5名のチームマネジメントを経験</li>
-                    </ul>
                 </div>
+                
                 <div class="experience-item">
-                    <div class="experience-header">
-                        <h3>株式会社レターファン</h3>
-                        <span class="experience-period">2020年</span>
+                    <div class="experience-date">2020</div>
+                    <div class="experience-content">
+                        <h3 class="company-name">株式会社レターファン</h3>
+                        <div class="role-title">iOSエンジニア</div>
+                        <div class="experience-description">
+                            <p>ビデオレターアプリ「LetterFan」のカメラ機能の実装および改善を担当</p>
+                        </div>
                     </div>
-                    <p class="experience-role">iOSエンジニア</p>
-                    <ul class="experience-details">
-                        <li>ビデオレターアプリ「LetterFan」のカメラ機能の実装および改善を担当</li>
-                    </ul>
                 </div>
             </div>
         </section>
 
-        <section class="section reveal">
-            <h2 class="section-title cat-title">EDUCATION</h2>
-            <div class="education-list reveal">
-                <div class="education-item">
-                    <h3>早稲田大学 基幹理工学部 数学科</h3>
-                    <p>在学中</p>
+        <!-- Education Section -->
+        <section class="content-section" id="education">
+            <div class="section-header">
+                <div class="section-number">05</div>
+                <h2 class="section-title">EDUCATION</h2>
+                <div class="section-subtitle">Academic Background</div>
+            </div>
+            
+            <div class="education-grid">
+                <div class="education-card current">
+                    <div class="education-status">在学中</div>
+                    <h3 class="education-title">早稲田大学</h3>
+                    <div class="education-detail">基幹理工学部 数学科</div>
                 </div>
-                <div class="education-item">
-                    <h3>東京工業大学附属科学技術高等学校 電気・電子分野</h3>
-                    <p>卒業</p>
+                
+                <div class="education-card">
+                    <div class="education-status">卒業</div>
+                    <h3 class="education-title">東京工業大学附属科学技術高等学校</h3>
+                    <div class="education-detail">電気・電子分野</div>
                 </div>
             </div>
         </section>
 
-        <section class="section reveal">
-            <h2 class="section-title cat-title">INTERESTS</h2>
-            <div class="interests-grid reveal">
-                <div class="interest-item">
-                    <h3>個人でのアプリ開発</h3>
-                    <ul>
-                        <li>ToDoMD: Markdownで管理できるToDoアプリ</li>
-                        <li>デジタル砂時計: LED風デザインの砂時計アプリ</li>
-                        <li>その他、自身のニーズに基づいたツールを多数開発</li>
-                    </ul>
+        <!-- Interests Section -->
+        <section class="content-section" id="interests">
+            <div class="section-header">
+                <div class="section-number">06</div>
+                <h2 class="section-title">INTERESTS</h2>
+                <div class="section-subtitle">Personal Projects & Hobbies</div>
+            </div>
+            
+            <div class="interests-grid">
+                <div class="interest-card">
+                    <h3 class="interest-title">個人でのアプリ開発</h3>
+                    <div class="interest-projects">
+                        <div class="project-item">ToDoMD: Markdownで管理できるToDoアプリ</div>
+                        <div class="project-item">デジタル砂時計: LED風デザインの砂時計アプリ</div>
+                        <div class="project-item">その他、自身のニーズに基づいたツールを多数開発</div>
+                    </div>
                 </div>
-                <div class="interest-item">
-                    <h3>自作キーボード</h3>
-                    <p>設計から3Dプリントまで行い、オリジナルのキーボードを製作</p>
+                
+                <div class="interest-card">
+                    <h3 class="interest-title">自作キーボード</h3>
+                    <p class="interest-description">設計から3Dプリントまで行い、オリジナルのキーボードを製作</p>
                 </div>
-                <div class="interest-item">
-                    <h3>記事執筆</h3>
-                    <p>noteで技術記事や生産性向上に関する記事を執筆・販売</p>
+                
+                <div class="interest-card">
+                    <h3 class="interest-title">記事執筆</h3>
+                    <p class="interest-description">noteで技術記事や生産性向上に関する記事を執筆・販売</p>
                 </div>
-                <div class="interest-item">
-                    <h3>マーケティング研究</h3>
-                    <p>特にTikTokやYouTubeショートなど、ショート動画コンテンツのバイラルについて個人的に研究・実践</p>
+                
+                <div class="interest-card">
+                    <h3 class="interest-title">マーケティング研究</h3>
+                    <p class="interest-description">特にTikTokやYouTubeショートなど、ショート動画コンテンツのバイラルについて個人的に研究・実践</p>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer class="footer cat-footer">
-        <div class="container">
-            <div class="footer-cat">
-                <div class="footer-line"></div>
-                <p>&copy; 2024 高橋 直希 (Naoki Takahashi). All rights reserved.</p>
-                <div class="footer-line"></div>
-            </div>
+    <footer class="main-footer">
+        <div class="footer-content">
+            <div class="footer-divider"></div>
+            <p>&copy; 2024 高橋 直希 (Naoki Takahashi). All rights reserved.</p>
+            <div class="footer-divider"></div>
         </div>
     </footer>
+
     <script>
-        // アニメーション用JavaScript
         document.addEventListener('DOMContentLoaded', function() {
-            // 肉球パーティクル生成
+            // Navigation functionality
+            const menuToggle = document.getElementById('menuToggle');
+            const navOverlay = document.getElementById('navOverlay');
+            const navClose = document.getElementById('navClose');
+            const navMenuItems = document.querySelectorAll('.nav-menu-item');
+            
+            menuToggle.addEventListener('click', function() {
+                navOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+            
+            navClose.addEventListener('click', function() {
+                navOverlay.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+            
+            navMenuItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    const section = this.dataset.section;
+                    const targetElement = document.getElementById(section);
+                    
+                    navOverlay.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                    
+                    if (targetElement) {
+                        targetElement.scrollIntoView({ behavior: 'smooth' });
+                    }
+                    
+                    // Update active state
+                    navMenuItems.forEach(nav => nav.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+            
+            // Particle system
             createPawPrints();
             
-            // 浮遊猫アニメーション（無効化）
-            // createFloatingCats();
-            
-            // スクロールアニメーション
+            // Scroll animations
             observeElements();
-            
-            // タイピングエフェクト
-            startTypingEffect();
-            
-            // スムーススクロール
-            smoothScrollSetup();
-            
-            // SVGアイコンアニメーション
-            animateCatIcon();
         });
         
         function createPawPrints() {
@@ -307,16 +587,14 @@
             function addPawPrint() {
                 const paw = document.createElement('div');
                 paw.className = 'paw-print';
-                const cyberSymbols = ['01', '10', '11', '00', '{;}', '< >', '[ ]', '( )', '::'];
-                paw.innerHTML = cyberSymbols[Math.floor(Math.random() * cyberSymbols.length)];
+                const personaSymbols = ['★', '◆', '■', '●', '▲', '♠', '♥', '♦', '♣', 'P5'];
+                paw.innerHTML = personaSymbols[Math.floor(Math.random() * personaSymbols.length)];
                 paw.style.left = Math.random() * 95 + '%';
                 paw.style.top = Math.random() * 95 + '%';
                 pawContainer.appendChild(paw);
                 
-                // 3秒後にフェードアウト開始
                 setTimeout(() => {
                     paw.style.animation = 'pawFadeOut 2s ease forwards';
-                    // フェードアウト完了後に要素を削除
                     setTimeout(() => {
                         if (paw.parentNode) {
                             paw.parentNode.removeChild(paw);
@@ -325,14 +603,12 @@
                 }, 3000);
             }
             
-            // 初期肉球をいくつか配置
             for (let i = 0; i < 3; i++) {
                 setTimeout(addPawPrint, i * 1000);
             }
             
-            // 定期的に新しい肉球を追加（2-5秒間隔）
             function schedulePawPrint() {
-                const delay = Math.random() * 3000 + 2000; // 2-5秒
+                const delay = Math.random() * 3000 + 2000;
                 setTimeout(() => {
                     addPawPrint();
                     schedulePawPrint();
@@ -340,27 +616,6 @@
             }
             
             schedulePawPrint();
-        }
-        
-        function createFloatingCats() {
-            // 浮遊猫の機能を無効化
-            return;
-        }
-        
-        function animateCatIcon() {
-            const catIcon = document.querySelector('.cat-icon');
-            if (!catIcon) return;
-            
-            // SVGアイコンに軽やかなアニメーション効果を追加
-            function bounce() {
-                catIcon.style.transform = 'scale(1.1) rotate(5deg)';
-                setTimeout(() => {
-                    catIcon.style.transform = 'scale(1) rotate(0deg)';
-                }, 200);
-            }
-            
-            // ランダムなタイミングでバウンス
-            setInterval(bounce, 5000 + Math.random() * 3000);
         }
         
         function observeElements() {
@@ -375,47 +630,8 @@
                 rootMargin: '0px 0px -50px 0px'
             });
             
-            document.querySelectorAll('.reveal').forEach(el => {
+            document.querySelectorAll('.content-section, .achievement-card, .skill-category, .experience-item, .education-card, .interest-card').forEach(el => {
                 observer.observe(el);
-            });
-            
-            
-            document.querySelectorAll('.project-card').forEach((card, index) => {
-                card.style.animationDelay = (index * 0.1) + 's';
-                observer.observe(card);
-            });
-        }
-        
-        function startTypingEffect() {
-            const element = document.querySelector('.typing-text');
-            const text = '電電猫猫';
-            let index = 0;
-            
-            element.textContent = '';
-            
-            function type() {
-                if (index < text.length) {
-                    element.textContent += text[index];
-                    index++;
-                    setTimeout(type, 200);
-                }
-            }
-            
-            setTimeout(type, 1000);
-        }
-        
-        function smoothScrollSetup() {
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        target.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                    }
-                });
             });
         }
     </script>
