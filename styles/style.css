@@ -176,6 +176,20 @@ body {
     margin-bottom: 15px;
 }
 
+.project-title-with-icon {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex: 1;
+}
+
+.project-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    flex-shrink: 0;
+}
+
 .project-header h3 {
     font-size: 1.4rem;
     font-weight: 600;
