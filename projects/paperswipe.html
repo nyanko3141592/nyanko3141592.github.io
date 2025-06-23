@@ -32,6 +32,11 @@
                 <img src="PaperSwipe/PaperSwipeIcon.webp" alt="PaperSwipe" class="nav-logo-icon">
                 <h1 class="logo">PaperSwipe</h1>
             </div>
+            <button class="mobile-menu-toggle" onclick="toggleMobileMenu()" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
             <div class="nav-links">
                 <a href="../index.html" class="nav-link" data-ja="プロフィール" data-en="Profile">プロフィール</a>
                 <a href="#features" class="nav-link" data-ja="機能" data-en="Features">機能</a>
@@ -228,7 +233,7 @@
     <!-- Support Section -->
     <section class="support-section">
         <div class="container">
-            <h2 class="section-title" data-ja="💛 PaperSwipeを応援する 💛" data-en="💛 Support PaperSwipe 💛">💛 PaperSwipeを応援する 💛</h2>
+            <h2 class="section-title" data-ja="💛 PaperSwipeを応援する 💛" data-en="💛 Support PaperSwipe 💛" style="white-space: nowrap;">💛 PaperSwipeを応援する 💛</h2>
             
             <div class="support-content">
                 <p class="support-description" data-ja="PaperSwipeは完全に非商用のプロジェクトとして開発・運営されています。広告も課金もありません。翻訳APIの利用料やサーバー維持費は全て開発者の持ち出しで賄っています。" data-en="PaperSwipe is developed and operated as a completely non-commercial project. There are no ads or paid features. All costs for translation API and server maintenance are covered by the developer.">
@@ -356,6 +361,27 @@
     </footer>
 
     <script>
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            const menuToggle = document.querySelector('.mobile-menu-toggle');
+            navLinks.classList.toggle('mobile-menu-open');
+            menuToggle.classList.toggle('active');
+        }
+        
+        // Close mobile menu when clicking a link
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    const navLinksContainer = document.querySelector('.nav-links');
+                    const menuToggle = document.querySelector('.mobile-menu-toggle');
+                    navLinksContainer.classList.remove('mobile-menu-open');
+                    menuToggle.classList.remove('active');
+                });
+            });
+        });
+        
         // Language toggle
         let currentLang = localStorage.getItem('paperswipe-lang') || 'ja';
         

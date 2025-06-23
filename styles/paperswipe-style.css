@@ -28,6 +28,7 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     word-break: auto-phrase;
+    overflow-x: hidden;
 }
 
 .container {
@@ -45,6 +46,7 @@ body {
     left: 0;
     right: 0;
     z-index: 1000;
+    width: 100%;
 }
 
 .nav {
@@ -125,6 +127,40 @@ body {
     transform: translateY(-2px);
 }
 
+/* Mobile Menu Toggle */
+.mobile-menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    position: relative;
+    width: 40px;
+    height: 40px;
+}
+
+.mobile-menu-toggle span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background: var(--text-primary);
+    margin: 5px auto;
+    transition: var(--transition);
+    position: relative;
+}
+
+.mobile-menu-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.mobile-menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.mobile-menu-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px);
+}
+
 /* Hero Section */
 .hero {
     background: linear-gradient(135deg, #ff6b9d 0%, #4ecdc4 50%, #ffd93d 100%);
@@ -133,6 +169,7 @@ body {
     margin-top: 80px;
     overflow: hidden;
     position: relative;
+    min-height: 500px;
 }
 
 .hero::before {
@@ -283,7 +320,7 @@ body {
 
 .features-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
 }
 
@@ -457,6 +494,12 @@ body {
 .support-section {
     padding: 80px 0;
     background: linear-gradient(135deg, #fff8e1 0%, #ffecb3 100%);
+}
+
+.support-section .section-title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .support-content {
@@ -750,19 +793,59 @@ body {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    .mobile-menu-toggle {
+        display: block;
+    }
+    
     .nav {
         padding: 1rem;
-        flex-direction: column;
-        gap: 1rem;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
     }
     
     .nav-links {
-        gap: 1rem;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--bg-primary);
+        flex-direction: column;
+        padding: 1rem;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        transform: translateY(-100%);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        z-index: 999;
+    }
+    
+    .nav-links.mobile-menu-open {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+    }
+    
+    .nav-link {
+        padding: 0.8rem 1rem;
+        display: block;
+        width: 100%;
+        text-align: center;
+        border-bottom: 1px solid var(--border-color);
+    }
+    
+    .nav-link:last-of-type {
+        border-bottom: none;
+    }
+    
+    .lang-switch {
+        margin: 1rem 0 0 0;
+        width: 100%;
     }
     
     .hero {
-        padding: 100px 0 60px;
-        margin-top: 120px;
+        padding: 80px 0 60px;
+        margin-top: 60px;
     }
     
     .hero-content {
@@ -794,6 +877,7 @@ body {
     
     .features-grid {
         grid-template-columns: 1fr;
+        gap: 1.5rem;
     }
     
     .feature-card {
@@ -841,6 +925,15 @@ body {
         padding: 1.5rem;
     }
     
+    .support-stats {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .support-section .section-title {
+        font-size: 1.8rem;
+    }
+    
     .milestone-title {
         font-size: 1.5rem;
     }
@@ -864,6 +957,23 @@ body {
         padding: 0 15px;
     }
     
+    .nav {
+        padding: 0.8rem 1rem;
+    }
+    
+    .nav-brand {
+        gap: 0.3rem;
+    }
+    
+    .logo {
+        font-size: 1.2rem;
+    }
+    
+    .nav-logo-icon {
+        width: 28px;
+        height: 28px;
+    }
+    
     .hero-title {
         font-size: 2rem;
     }
@@ -885,12 +995,17 @@ body {
         max-width: 200px;
     }
     
+    .features, .how-to-use, .stats, .download, .support-section, .faq {
+        padding: 60px 0;
+    }
+    
     .section-title {
         font-size: 1.8rem;
     }
     
     .feature-card {
         padding: 1.5rem;
+        min-height: auto;
     }
     
     .feature-icon {
@@ -921,6 +1036,71 @@ body {
     
     .faq-item.active .faq-answer {
         padding: 1rem;
+        max-height: 300px;
+    }
+    
+    .download-description {
+        font-size: 1rem;
+        margin-bottom: 2rem;
+    }
+    
+    .support-description, .support-appeal {
+        font-size: 1rem;
+    }
+    
+    .support-section .section-title {
+        font-size: 1.5rem;
+    }
+}
+
+/* Additional Mobile Optimizations */
+@media (max-width: 768px) {
+    .hero-image {
+        order: -1;
+    }
+    
+    .mockup-container {
+        margin-bottom: 2rem;
+    }
+    
+    .btn {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .hero-actions {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .download-buttons .app-store-btn img {
+        height: 50px;
+    }
+    
+    .support-button img {
+        height: 50px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .step-content h3 {
+        font-size: 1.1rem;
+    }
+    
+    .step-content p {
+        font-size: 0.9rem;
+    }
+    
+    .faq-question h3 {
+        font-size: 1rem;
+    }
+    
+    .milestone-message, .milestone-note {
+        font-size: 0.95rem;
     }
 }
 
@@ -939,6 +1119,24 @@ body {
 .faq-question:focus {
     outline: 2px solid var(--primary-color);
     outline-offset: 2px;
+}
+
+/* Touch-friendly improvements */
+@media (hover: none) and (pointer: coarse) {
+    .btn, .nav-link, .faq-question {
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .feature-card:hover {
+        transform: none;
+    }
+    
+    .support-stat:hover {
+        transform: none;
+    }
 }
 
 /* High contrast support */
