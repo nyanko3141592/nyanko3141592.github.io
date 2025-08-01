@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link rel="stylesheet" href="styles/expense-calculator-style.css" type="text/css" />
+    <link rel="shortcut icon" type="image/svg+xml" href="images/icon.svg">
+    
+    <title>累積費用計算ジェネレーター | 電電猫猫</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <header class="header">
+            <a href="/" class="back-link">← トップページに戻る</a>
+            <h1>累積費用計算ジェネレーター</h1>
+            <p class="subtitle">日常の出費が積み重なると高額に！</p>
+        </header>
+
+        <main class="main-content">
+            <div class="calculator-section">
+                <h2>計算フォーム</h2>
+                
+                <div class="form-group">
+                    <label for="itemName">習慣・商品名</label>
+                    <input type="text" id="itemName" placeholder="例: 煙草" value="煙草">
+                    <small class="form-hint">※現在は「煙草」のフォーマットのみ対応</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="unitPrice">1回あたりの金額（円）</label>
+                    <input type="number" id="unitPrice" placeholder="例: 600" value="600">
+                </div>
+
+                <div class="form-group">
+                    <label for="frequency">1日あたりの回数・個数</label>
+                    <input type="number" id="frequency" placeholder="例: 2（2箱の場合）" value="2" step="0.1">
+                </div>
+
+                <div class="form-group">
+                    <label for="years">継続年数</label>
+                    <input type="number" id="years" placeholder="自動計算されます" readonly>
+                    <small class="form-hint">比較対象を購入できるまでの年数が自動計算されます</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="comparisonItem">比較対象</label>
+                    <input type="text" id="comparisonItem" placeholder="例: ベンツ" value="ベンツ">
+                </div>
+
+                <div class="form-group">
+                    <label for="comparisonPrice">比較対象の価格（円）</label>
+                    <input type="number" id="comparisonPrice" placeholder="例: 8000000" value="8000000">
+                </div>
+
+                <button id="generateBtn" class="generate-btn">コピペ文を生成</button>
+            </div>
+
+            <div class="result-section">
+                <h2>生成されたコピペ文</h2>
+                <div id="result" class="result-text">
+                    <textarea id="resultTextarea" class="result-textarea" placeholder="ここに生成されたテキストが表示されます" disabled></textarea>
+                </div>
+                <div class="action-buttons">
+                    <button id="copyBtn" class="copy-btn" disabled>コピー</button>
+                    <button id="tweetBtn" class="tweet-btn" disabled>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                        </svg>
+                        ポスト
+                    </button>
+                    <div id="copyMessage" class="copy-message"></div>
+                </div>
+
+                <div class="calculation-details">
+                    <h3>計算の詳細</h3>
+                    <div id="calculationDetails" class="details-content">
+                        <p>フォームに入力して「コピペ文を生成」をクリックしてください</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="examples-section">
+                <h2>使用例</h2>
+                <div class="example-cards">
+                    <div class="example-card">
+                        <h3>煙草の例</h3>
+                        <p>1箱600円 × 1日2箱 × 30年 = 13,140,000円</p>
+                        <p class="example-note">高級車が買えるくらいの金額に！</p>
+                    </div>
+                    <div class="example-card">
+                        <h3>コーヒーの例</h3>
+                        <p>1杯500円 × 1日2杯 × 10年 = 3,650,000円</p>
+                        <p class="example-note">新車が買えるくらいの金額に！</p>
+                    </div>
+                    <div class="example-card">
+                        <h3>ランチ代の例</h3>
+                        <p>1食1000円 × 週5日 × 20年 = 5,200,000円</p>
+                        <p class="example-note">マンションの頭金になるくらいの金額に！</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2024 高橋 直希 (Naoki Takahashi). All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        const itemNameInput = document.getElementById('itemName');
+        const unitPriceInput = document.getElementById('unitPrice');
+        const frequencyInput = document.getElementById('frequency');
+        const yearsInput = document.getElementById('years');
+        const comparisonItemInput = document.getElementById('comparisonItem');
+        const comparisonPriceInput = document.getElementById('comparisonPrice');
+        const generateBtn = document.getElementById('generateBtn');
+        const resultTextarea = document.getElementById('resultTextarea');
+        const copyBtn = document.getElementById('copyBtn');
+        const tweetBtn = document.getElementById('tweetBtn');
+        const copyMessage = document.getElementById('copyMessage');
+        const calculationDetails = document.getElementById('calculationDetails');
+
+        function formatNumber(num) {
+            return num.toLocaleString('ja-JP');
+        }
+
+        function calculateYears() {
+            const unitPrice = parseInt(unitPriceInput.value) || 600;
+            const frequency = parseFloat(frequencyInput.value) || 2;
+            const comparisonPrice = parseInt(comparisonPriceInput.value) || 8000000;
+            
+            const dailyCost = unitPrice * frequency;
+            const yearlyCost = dailyCost * 365;
+            const years = Math.ceil(comparisonPrice / yearlyCost);
+            
+            yearsInput.value = years;
+            return years;
+        }
+
+        function generateCopyPasta() {
+            const itemName = itemNameInput.value || '煙草';
+            const unitPrice = parseInt(unitPriceInput.value) || 600;
+            const frequency = parseFloat(frequencyInput.value) || 2;
+            const comparisonItem = comparisonItemInput.value || 'ベンツ';
+            const comparisonPrice = parseInt(comparisonPriceInput.value) || 8000000;
+            
+            // 年数を自動計算
+            const years = calculateYears();
+
+            // 総額を計算
+            const dailyCost = unitPrice * frequency;
+            const yearlyCost = dailyCost * 365;
+            const totalCost = yearlyCost * years;
+
+            // 頻度の表現を生成
+            let frequencyText = '';
+            if (itemName === '煙草') {
+                frequencyText = frequency === 1 ? 'ひと箱' : `${frequency}箱`;
+            } else {
+                frequencyText = frequency === 1 ? '1つ' : `${frequency}つ`;
+            }
+
+            // 比較対象の個数を計算（切り上げた年数での総額を使うので、必ず1台以上買える）
+            const comparisonText = `あれくらい買えたんですよ。`;
+
+            // コピペ文を生成
+            const copyPasta = `A：${itemName}吸ってもよろしいですか？
+B：どうぞ。ところで一日に何本くらいお吸いに？
+A：${frequencyText}くらいですね。
+B：喫煙年数はどれくらいですか？
+A：${years}年くらいですね。
+B：なるほど。あそこに${comparisonItem}が停まってますね。
+A：停まってますね。
+B：もしあなたが${itemName}を吸わなければ、${comparisonText}
+A：あれは私の${comparisonItem}ですけど。`;
+
+            resultTextarea.value = copyPasta;
+            resultTextarea.disabled = false;
+            copyBtn.disabled = false;
+            tweetBtn.disabled = false;
+
+            // 計算の詳細を表示
+            calculationDetails.innerHTML = `
+                <p><strong>1日あたり:</strong> ${formatNumber(unitPrice)}円 × ${frequency} = ${formatNumber(dailyCost)}円</p>
+                <p><strong>1年あたり:</strong> ${formatNumber(dailyCost)}円 × 365日 = ${formatNumber(yearlyCost)}円</p>
+                <p><strong>必要年数:</strong> ${formatNumber(comparisonPrice)}円 ÷ ${formatNumber(yearlyCost)}円/年 = <span class="highlight">${years}年</span></p>
+                <p><strong>${years}年間の総額:</strong> ${formatNumber(yearlyCost)}円 × ${years}年 = ${formatNumber(totalCost)}円</p>
+                <p><strong>結果:</strong> ${years}年で${comparisonItem}（${formatNumber(comparisonPrice)}円）が購入できます。</p>
+            `;
+        }
+
+        function copyToClipboard() {
+            const text = resultTextarea.value;
+            navigator.clipboard.writeText(text).then(() => {
+                copyMessage.textContent = 'コピーしました！';
+                copyMessage.style.opacity = '1';
+                setTimeout(() => {
+                    copyMessage.style.opacity = '0';
+                }, 2000);
+            }).catch(err => {
+                copyMessage.textContent = 'コピーに失敗しました';
+                copyMessage.style.opacity = '1';
+                setTimeout(() => {
+                    copyMessage.style.opacity = '0';
+                }, 2000);
+            });
+        }
+
+        function tweetText() {
+            const text = resultTextarea.value;
+            const tweetUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`;
+            window.open(tweetUrl, '_blank', 'noopener,noreferrer');
+        }
+
+        // イベントリスナー
+        generateBtn.addEventListener('click', generateCopyPasta);
+        copyBtn.addEventListener('click', copyToClipboard);
+        tweetBtn.addEventListener('click', tweetText);
+
+        // 入力値が変更されたら年数を再計算
+        unitPriceInput.addEventListener('input', calculateYears);
+        frequencyInput.addEventListener('input', calculateYears);
+        comparisonPriceInput.addEventListener('input', calculateYears);
+
+        // エンターキーで生成
+        document.querySelectorAll('input').forEach(input => {
+            input.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    generateCopyPasta();
+                }
+            });
+        });
+
+        // 初期値で年数を計算
+        calculateYears();
+    </script>
+</body>
+</html>
